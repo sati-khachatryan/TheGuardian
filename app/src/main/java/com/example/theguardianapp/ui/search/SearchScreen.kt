@@ -1,4 +1,4 @@
-package com.example.theguardianapp.ui.theme.search
+package com.example.theguardianapp.ui.search
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.theguardianapp.ui.theme.news.NewsList
+import com.example.theguardianapp.ui.news.NewsList
 
 @Composable
 fun SearchScreen(

@@ -13,14 +13,14 @@ class ArticleDataUseCaseImpl @Inject constructor(
     private val articlesRepository: ArticleRemoteDataSource
 ) : ArticleDataUseCase {
 
-    override fun getArticles(): Flow<PagingData<Results>> {
+    override suspend fun getArticles(): Flow<PagingData<Results>> {
         return articlesRepository.getData()
             .map { pagingData ->
                 pagingData.map { it.toArticles() }
             }
     }
 
-    override fun searchData(query: String): Flow<PagingData<Results>> {
+    override suspend fun searchData(query: String): Flow<PagingData<Results>> {
         return articlesRepository.searchData(query)
             .map { pagingData ->
                 pagingData.map { it.toArticles() }

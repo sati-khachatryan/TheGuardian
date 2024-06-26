@@ -1,19 +1,16 @@
-package com.example.theguardianapp.ui.theme.navigation
+package com.example.theguardianapp.navigation
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 import com.example.theguardianapp.model.Results
-import com.example.theguardianapp.ui.theme.screens.SplashScreen
-import com.example.theguardianapp.ui.theme.news.NewsScreen
-import com.example.theguardianapp.ui.theme.screens.ArticleScreen
-import com.example.theguardianapp.ui.theme.search.SearchScreen
+import com.example.theguardianapp.ui.splash.SplashScreen
+import com.example.theguardianapp.ui.news.NewsScreen
+import com.example.theguardianapp.ui.articles.ArticleScreen
+import com.example.theguardianapp.ui.search.SearchScreen
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable
 fun Navigation() {
     val navController = rememberNavController()

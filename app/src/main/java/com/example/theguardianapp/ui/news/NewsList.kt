@@ -1,4 +1,4 @@
-package com.example.theguardianapp.ui.theme.news
+package com.example.theguardianapp.ui.news
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,8 +17,8 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.example.theguardianapp.model.Results
 import com.example.theguardianapp.ui.theme.HalfPadding
-import com.example.theguardianapp.ui.theme.navigation.NAV_NEWS_ITEM
-import com.example.theguardianapp.ui.theme.navigation.NavigationScreens
+import com.example.theguardianapp.navigation.NAV_NEWS_ITEM
+import com.example.theguardianapp.navigation.NavigationScreens
 
 @Composable
 fun NewsList(

@@ -1,4 +1,4 @@
-package com.example.theguardianapp.ui.theme.screens
+package com.example.theguardianapp.ui.articles
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,7 @@ import coil.compose.AsyncImage
 import com.example.theguardianapp.model.Results
 import com.example.theguardianapp.ui.theme.ContentTextPadding
 import com.example.theguardianapp.ui.theme.HalfPadding
-import com.example.theguardianapp.ui.theme.toReadableDate
+import com.example.theguardianapp.ui.theme.date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -29,13 +29,6 @@ fun ArticleScreen(
     item: Results
 ) {
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "articles")
-                }
-            )
-        },
         content = {
             ArticleScreenContent(
                 item = item,
@@ -55,7 +48,6 @@ fun ArticleScreenContent(
         modifier = modifier
             .padding(start = HalfPadding)
             .verticalScroll(rememberScrollState())
-//            .height(IntrinsicSize.Max)
     ) {
         Text(
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -90,7 +82,7 @@ fun ArticleScreenContent(
                 .align(Alignment.End)
                 .padding(start = ContentTextPadding, end = ContentTextPadding)
                 .align(Alignment.CenterHorizontally),
-            text = item.webPublicationDate.toReadableDate(),
+            text = item.webPublicationDate.date(),
             style = MaterialTheme.typography.bodySmall
         )
     }

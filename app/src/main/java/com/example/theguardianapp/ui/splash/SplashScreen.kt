@@ -1,4 +1,4 @@
-package com.example.theguardianapp.ui.theme.screens
+package com.example.theguardianapp.ui.splash
 
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.compose.animation.core.Animatable
@@ -18,7 +18,7 @@ import androidx.navigation.NavController
 import com.example.theguardianapp.R
 import com.example.theguardianapp.ui.theme.SplashIconSize
 import com.example.theguardianapp.ui.theme.background
-import com.example.theguardianapp.ui.theme.navigation.NavigationScreens
+import com.example.theguardianapp.navigation.NavigationScreens
 import kotlinx.coroutines.delay
 
 @Composable
@@ -51,7 +51,7 @@ fun SplashScreen(navController: NavController) {
             .background(background)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            painter = painterResource(id = R.drawable.baseline_downloading_24),
             contentDescription = "Logo",
             modifier = Modifier
                 .size(SplashIconSize)

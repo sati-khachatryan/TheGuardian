@@ -6,7 +6,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.theguardianapp.model.ArticleEntity
 import com.example.theguardianapp.repo.local.ArticleDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
@@ -15,8 +17,8 @@ class ArticleRemoteDataSourceImpl @Inject constructor(
     private val articleApi: ApiService
 ) : ArticleRemoteDataSource {
 
-    override fun getData(): Flow<PagingData<ArticleEntity>> {
-        return Pager(
+    override suspend fun getData(): Flow<PagingData<ArticleEntity>> = withContext(Dispatchers.IO) {
+        Pager(
             config = PagingConfig(pageSize = 20),
             remoteMediator = ArticleRemoteMediator(
                 articleDb = articleDb,
@@ -28,15 +30,16 @@ class ArticleRemoteDataSourceImpl @Inject constructor(
         ).flow
     }
 
-    override fun searchData(query: String): Flow<PagingData<ArticleEntity>> {
-        return Pager(
-            config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = {
-                SearchPagingSource(
-                    articleApi = articleApi,
-                    query = query
-                )
-            }
-        ).flow
-    }
+    override suspend fun searchData(query: String): Flow<PagingData<ArticleEntity>> =
+        withContext(Dispatchers.IO) {
+            Pager(
+                config = PagingConfig(pageSize = 20),
+                pagingSourceFactory = {
+                    SearchPagingSource(
+                        articleApi = articleApi,
+                        query = query
+                    )
+                }
+            ).flow
+        }
 }

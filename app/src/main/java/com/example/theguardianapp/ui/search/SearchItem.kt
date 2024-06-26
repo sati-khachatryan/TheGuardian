@@ -1,4 +1,4 @@
-package com.example.theguardianapp.ui.theme.search
+package com.example.theguardianapp.ui.search
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape

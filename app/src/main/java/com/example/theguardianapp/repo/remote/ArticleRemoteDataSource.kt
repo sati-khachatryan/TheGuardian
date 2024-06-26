@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ArticleRemoteDataSource {
 
-    fun getData(): Flow<PagingData<ArticleEntity>>
+    suspend fun getData(): Flow<PagingData<ArticleEntity>>
 
-    fun searchData(query: String): Flow<PagingData<ArticleEntity>>
+    suspend fun searchData(query: String): Flow<PagingData<ArticleEntity>>
 }

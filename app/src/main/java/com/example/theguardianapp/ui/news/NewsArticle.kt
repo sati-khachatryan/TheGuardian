@@ -1,4 +1,4 @@
-package com.example.theguardianapp.ui.theme.news
+package com.example.theguardianapp.ui.news
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,7 +24,7 @@ import com.example.theguardianapp.model.Fields
 import com.example.theguardianapp.model.Results
 import com.example.theguardianapp.ui.theme.HalfPadding
 import com.example.theguardianapp.ui.theme.NewsCardItemElevation
-import com.example.theguardianapp.ui.theme.toReadableDate
+import com.example.theguardianapp.ui.theme.date
 
 @Composable
 fun NewsArticle(
@@ -73,7 +73,7 @@ fun NewsArticle(
                 )
 
                 Text(
-                    text = newsItem.webPublicationDate.toReadableDate(),
+                    text = newsItem.webPublicationDate.date(),
                     modifier = Modifier.fillMaxWidth(),
                     style = MaterialTheme.typography.bodySmall,
                     textAlign = TextAlign.End
@@ -88,11 +88,11 @@ fun NewsArticle(
 fun PreviewNewsArticleItem() {
     val article = Results(
         index = 1,
-        webPublicationDate = "2024-06-18T22:46:08Z",
-        webTitle = "Australia news live: police investigate vandalism of Josh Burns’ St Kilda office; Peter Dutton to unveil nuclear plans",
+        webPublicationDate = "2024-05-20T09:20:08Z",
+        webTitle = "London-listed Keywords Studios says it will accept £2bn offer",
         fields = Fields(
-            bodyText = "Australia news live: police investigate vandalism of Josh Burns’ St Kilda office; Peter Dutton to unveil nuclear plans Australia news live: police investigate vandalism of Josh Burns’ St Kilda office; Peter Dutton to unveil nuclear plans Australia news live: police investigate vandalism of Josh Burns’ St Kilda office; Peter Dutton to unveil nuclear plans",
-            thumbnail = "https://media.guim.co.uk/953613a287ea14e076ef67da532c3cfcdf7dfa3b/0_0_6266_3762/500.jpg"
+            bodyText = "",
+            thumbnail = "https://media.guim.co.uk/e439308c7c1a276ea7245a840c74960680446655/0_87_4200_2522/500.jpg"
         )
     )
     NewsArticle(newsItem = article, {})

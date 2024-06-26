@@ -1,4 +1,4 @@
-package com.example.theguardianapp.ui.theme.news
+package com.example.theguardianapp.ui.news
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -20,7 +21,7 @@ import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.theguardianapp.ui.theme.HalfPadding
-import com.example.theguardianapp.ui.theme.navigation.NavigationScreens
+import com.example.theguardianapp.navigation.NavigationScreens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,7 +29,11 @@ fun NewsScreen(
     navController: NavController,
     newsViewModel: NewsViewModel = hiltViewModel(),
 ) {
-    val news = newsViewModel.news.collectAsLazyPagingItems()
+    val isLoaded = newsViewModel.loaded.collectAsState()
+    if (!isLoaded.value) {
+        return
+    }
+    val news = newsViewModel.getNews().collectAsLazyPagingItems()
 
     val context = LocalContext.current
     LaunchedEffect(key1 = news.loadState) {
@@ -43,13 +48,6 @@ fun NewsScreen(
     }
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = "articles")
-                }
-            )
-        },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {

@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ArticleDataUseCase {
 
-    fun getArticles(): Flow<PagingData<Results>>
+    suspend fun getArticles(): Flow<PagingData<Results>>
 
-    fun searchData(query: String): Flow<PagingData<Results>>
+    suspend fun searchData(query: String): Flow<PagingData<Results>>
 }
