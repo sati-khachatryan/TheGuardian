@@ -5,5 +5,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ResponseData(
-    @SerializedName("response") var response: Response
+    @SerializedName("response") val response: Response
 )

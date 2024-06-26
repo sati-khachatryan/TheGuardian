@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Results(
     val index: Int?,
-    @SerializedName("webPublicationDate") var webPublicationDate: String,
-    @SerializedName("webTitle") var webTitle: String,
-    @SerializedName("fields") var fields: Fields
+    @SerializedName("webPublicationDate") val webPublicationDate: String,
+    @SerializedName("webTitle") val webTitle: String,
+    @SerializedName("fields") val fields: Fields
 ) : Parcelable
