@@ -20,6 +20,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+private const val BASE_URL = "https://content.guardianapis.com/"
+private const val API_KEY = "api-key"
+private const val TEST = "test"
+
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
@@ -35,7 +39,7 @@ object AppModule {
     }
 
     @Provides
-    fun provideBaseUrl(): String = "https://content.guardianapis.com/"
+    fun provideBaseUrl(): String = BASE_URL
 
     @Provides
     @Singleton
@@ -53,7 +57,7 @@ object AppModule {
     private val client = OkHttpClient.Builder().apply {
         addInterceptor { chain ->
             val request =
-                chain.request().newBuilder().addHeader("api-key", "test").build()
+                chain.request().newBuilder().addHeader(API_KEY, TEST).build()
             chain.proceed(request)
         }
     }
